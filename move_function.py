@@ -19,7 +19,7 @@ PWM.init_channel(0)
 
 pos_x = 0
 pos_y = 0
-step = 20
+step = 15
 
 def init_pos():
 	
@@ -43,7 +43,7 @@ def to_right():
 	global pos_x
 	global step
 	read_pos()
-	pos_x = int(pos_x) + int(step)
+	pos_x = int(pos_x) - int(step)
 	pos = open(pos_file_x,"w")
 	pos.write(str(pos_x))
 	pos.close()
@@ -54,7 +54,7 @@ def to_left():
         global pos_x
 	global step
         read_pos()
-        pos_x = int(pos_x) - int(step)
+        pos_x = int(pos_x) + int(step)
         pos = open(pos_file_x,"w")
         pos.write(str(pos_x))
         pos.close()
@@ -82,4 +82,3 @@ def to_bottom():
         pos.close()
         PWM.add_channel_pulse(0, 4, 0, pos_y)
 	sleep(1)
-
